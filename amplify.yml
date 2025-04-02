@@ -1,0 +1,17 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm install -g pnpm  # Installs pnpm globally in the build environment
+        - pnpm install         # Runs your package install
+    build:
+      commands:
+        - pnpm run build       # Builds your n8n app (adjust if your script’s different)
+  artifacts:
+    baseDirectory: dist      # Where n8n outputs (check your repo to confirm)
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
